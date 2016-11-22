@@ -7,46 +7,24 @@ class Cashier {
 	}
 	
 	public function getTotalPrice($studentID) {
+		$settingObject = new Settings();
 		$subjectObject = new Subject();
 		$totalUnits = $subjectObject->getCurrentUnits($studentID);
-		$perUnit = $this->getPricePerUnit();
-		$misc = $this->getPriceMisc();
+		$perUnit = $settingObject->getPricePerUnit();
+		$misc = $settingObject->getPriceMisc();
 		$result = $totalUnits * $perUnit + $misc;
 
 		return $result;
 	}
 	public function getTotalUnitPrice($studentID) {
+		$settingObject = new Settings();
 		$subjectObject = new Subject();
 		$totalUnits = $subjectObject->getCurrentUnits($studentID);
-		$perUnit = $this->getPricePerUnit();
+		$perUnit = $settingObject->getPricePerUnit();
 		$result = $totalUnits * $perUnit;
 
 		return $result;
 	}
-	public function getPricePerUnit()
-	{
-		$query = "
-			SELECT
-				price_per_unit
-			FROM settings
-		";
 
-		$results = $this->_db->connection->query($query);
-		$results = $results->fetch_all(MYSQLI_ASSOC);
-		return (empty($results))?0:$results[0]['price_per_unit'];
-	}
-
-	public function getPriceMisc()
-	{
-		$query = "
-			SELECT
-				price_of_misc
-			FROM settings
-		";
-
-		$results = $this->_db->connection->query($query);
-		$results = $results->fetch_all(MYSQLI_ASSOC);
-		return (empty($results))?0:$results[0]['price_of_misc'];
-	}
 }	
 ?>	

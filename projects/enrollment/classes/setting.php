@@ -15,7 +15,7 @@ class Settings {
 	function isEcceededUnits($studentID = null, $subjectID = null) {
 		$subjectObject = new Subject();
 		$currentUnits = $subjectObject->getCurrentUnits($studentID);
-		$subjectUnits = $this->getSubjectUnits($subjectID);
+		$subjectUnits = $subjectObject->getSubjectUnits($subjectID);
 		$allowedUnits = $this->getAllowedUnits();
 
 		return ($allowedUnits < ($currentUnits + $subjectUnits));
@@ -46,6 +46,32 @@ class Settings {
 		$results = $this->_db->connection->query($query);
 		$results = $results->fetch_all(MYSQLI_ASSOC);
 		return (empty($results))?0:$results[0]['number_of_allowed_units'];
+	}
+
+
+	public function getPriceMisc()
+	{
+		$query = "
+			SELECT
+				price_of_misc
+			FROM settings
+		";
+
+		$results = $this->_db->connection->query($query);
+		$results = $results->fetch_all(MYSQLI_ASSOC);
+		return (empty($results))?0:$results[0]['price_of_misc'];
+	}
+	public function getPricePerUnit()
+	{
+		$query = "
+			SELECT
+				price_per_unit
+			FROM settings
+		";
+
+		$results = $this->_db->connection->query($query);
+		$results = $results->fetch_all(MYSQLI_ASSOC);
+		return (empty($results))?0:$results[0]['price_per_unit'];
 	}
 }
 ?>

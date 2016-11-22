@@ -8,7 +8,6 @@
 			<div id="container">
 			<form>
 				<a style="float:left" href="/enrollment">(Return)</a>
-				<a class="pull-right btn btn-success"  type="submit"href="subjectAdd.php"><i class="icon icon-plus"></i></a>
 			</form>
 				<table class="table table-bordered table-condensed table-striped">
 					<tr>

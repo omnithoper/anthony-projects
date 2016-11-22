@@ -3,13 +3,15 @@
 	require  '../../classes/student subject class.php';
 	require '../../lib/smarty/Smarty.class.php'; 
 	require  '../../classes/cashier.php';
+	require  '../../classes/setting.php';
 	require  '../../classes/subject.php';
 
 	$studentID = Request::getParam('studentID');
 	$studentName = Request::getParam('studentName');
 
+	$settingObject = new Settings();
 	$cashierObject =  new Cashier();
-	$priceMisc = $cashierObject->getPriceMisc();	
+	$priceMisc = $settingObject->getPriceMisc();	
 	$totalPrice = $cashierObject->getTotalPrice($studentID);
 	$totalUnitPrice = $cashierObject->getTotalUnitPrice($studentID);
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-22 09:03:35
+/* Smarty version 3.1.30, created on 2016-11-22 09:03:05
   from "C:\Users\omnithopter\Documents\projects\enrollment\templates\setting\view.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583409e78b0b46_19125827',
+  'unifunc' => 'content_583409c99d3531_00598734',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '686787b68f27bca5b7e8470b477f65a48a03cccd' => 
     array (
       0 => 'C:\\Users\\omnithopter\\Documents\\projects\\enrollment\\templates\\setting\\view.tpl',
-      1 => 1479805411,
+      1 => 1479805381,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_583409e78b0b46_19125827 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583409c99d3531_00598734 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 	<head>	
