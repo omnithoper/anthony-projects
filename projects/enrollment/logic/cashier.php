@@ -5,6 +5,7 @@
 	require  '../../classes/cashier.php';
 	require  '../../classes/setting.php';
 	require  '../../classes/subject.php';
+	require  '../../classes/payment.php';
 
 	$studentID = Request::getParam('studentID');
 	$studentName = Request::getParam('studentName');
@@ -17,6 +18,8 @@
 
 	$studentSubjectObject = new studentSubjectMatch();
 	$allSubject = $studentSubjectObject->getStudentSubjects($studentID);
+	$paymentObject = new Payment();
+	//$editPayment = $paymentObject->ifPayed($studentID, $totalAmount, $change);
 
 	$subjectObject = new  Subject();
 	$totalUnit = $subjectObject->getCurrentUnits($studentID);

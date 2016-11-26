@@ -6,10 +6,45 @@ class Student {
 		$this->_db = new DatabaseConnect();
 	}
 	function getViewStudents() {
-		$select ="SELECT * FROM student  ";
+	$payment = $this->getViewStudentPayed();		
+		$select = "SELECT * FROM student";
 		$student = $this->_db->connection->query($select);
+		$student = $student->fetch_all(MYSQLI_ASSOC);
+		$result = [];
+		$payed = NULL;
+		foreach ($student as $students){
+			foreach ($payment as $payments) {
+				if (($students['student_id'] == $payments['student_id']) &&($payments['payment'] == 1)) {	
+					$students['payed'] ='payed';	
+					$payed = $students;
+					break;
+					 $result[] = $payed;
+					} else   { 
+					$students['payed'] ='not yet payed';	
+					 $payed = $students;	
+				}	
+			} 
+			$result[] = $payed;
+
+		}	return $result;
+	}	
+	function getViewStudentPayed() {
+
+	$select="
+			SELECT
+			student.student_id,
+			payment.payment
+			FROM student 
+			JOIN payment ON student.student_id = payment.student_id
+		";
+		$student = $this->_db->connection->query($select);
+		$student = $student->fetch_all(MYSQLI_ASSOC);
+
+	
 		return $student;
+
 	}
+
 	function getViewStudentsPaginated($per_page) {
 		$select ="SELECT * FROM student LIMIT $per_page,5 ";
 		$student = $this->_db->connection->query($select);
@@ -84,8 +119,8 @@ class Student {
 		$prepared->bind_result($studentID);
 		$prepared->fetch();
 		$this->_db->connection->close();
-		
 		return !empty($studentID);
+
 	} 
 	
 	function getAddStudent($firstName, $lastName) {
